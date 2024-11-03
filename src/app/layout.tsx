@@ -12,7 +12,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'mkaidev | kerja',
+  title: 'Slack Clone',
   description:
     'Build a Real-Time Slack Clone With Nextjs, React, Tailwind, Auth.js',
 };
