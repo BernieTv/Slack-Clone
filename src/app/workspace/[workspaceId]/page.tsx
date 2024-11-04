@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo } from "react";
-import { useRouter } from "next/navigation";
-import { Loader, TriangleAlert } from "lucide-react";
+import { useEffect, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+import { Loader, TriangleAlert } from 'lucide-react';
 
-import { useWorkspaceId } from "@/hooks/use-workspace-id";
-import { useCreateChannelModal } from "@/features/channels/store/use-create-channel-modal";
-import { useGetWorkspace } from "@/features/workspaces/api/use-get-workspace";
-import { useGetChannels } from "@/features/channels/api/use-get-channels";
-import { useCurrentMember } from "@/features/members/api/use-current-member";
+import { useWorkspaceId } from '@/hooks/use-workspace-id';
+import { useCreateChannelModal } from '@/features/channels/store/use-create-channel-modal';
+import { useGetWorkspace } from '@/features/workspaces/api/use-get-workspace';
+import { useGetChannels } from '@/features/channels/api/use-get-channels';
+import { useCurrentMember } from '@/features/members/api/use-current-member';
 
 const WorkspaceIdPage = () => {
   const router = useRouter();
   const workspaceId = useWorkspaceId();
 
-  const [open, SetOpen] = useCreateChannelModal();
+  const [open, setOpen] = useCreateChannelModal();
 
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkspace({
     id: workspaceId,
@@ -29,7 +29,7 @@ const WorkspaceIdPage = () => {
   });
 
   const channelId = useMemo(() => channels?.[0]?._id, [channels]);
-  const isAdmin = useMemo(() => member?.role === "admin", [member?.role]);
+  const isAdmin = useMemo(() => member?.role === 'admin', [member?.role]);
 
   useEffect(() => {
     if (
@@ -44,7 +44,7 @@ const WorkspaceIdPage = () => {
     if (channelId) {
       router.push(`/workspace/${workspaceId}/channel/${channelId}`);
     } else if (!open && isAdmin) {
-      SetOpen(true);
+      setOpen(true);
     }
   }, [
     member,
@@ -55,7 +55,7 @@ const WorkspaceIdPage = () => {
     channelsLoading,
     workspace,
     open,
-    SetOpen,
+    setOpen,
     router,
     workspaceId,
   ]);
