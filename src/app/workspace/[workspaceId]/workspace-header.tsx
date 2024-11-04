@@ -36,6 +36,7 @@ export const WorkspaceHeader = ({
         name={workspace.name}
         joinCode={workspace.joinCode}
       />
+
       <PreferencesModal
         open={preferencesOpen}
         setOpen={setPreferencesOpen}
