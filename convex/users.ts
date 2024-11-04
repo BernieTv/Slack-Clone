@@ -1,5 +1,6 @@
-import { query } from './_generated/server';
 import { getAuthUserId } from '@convex-dev/auth/server';
+
+import { query } from './_generated/server';
 
 export const current = query({
   args: {},
@@ -11,5 +12,5 @@ export const current = query({
     }
 
     return await ctx.db.get(userId);
-  }
+  },
 });
