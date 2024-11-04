@@ -29,6 +29,7 @@ export default function RootLayout({
           <ConvexClientProvider>
             <JotaiProvider>
               <Modals />
+
               {children}
             </JotaiProvider>
             <Toaster richColors theme="light" position="bottom-center" />
