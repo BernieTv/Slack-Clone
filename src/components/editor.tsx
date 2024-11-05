@@ -145,6 +145,7 @@ const Editor = ({
 
   const toogleToolbar = () => {
     setIsToolbarVisible((current) => !current);
+
     const toolbarElement = containerRef.current?.querySelector('.ql-toolbar');
 
     if (toolbarElement) {
@@ -181,7 +182,7 @@ const Editor = ({
         {!!image && (
           <div className="p-2">
             <div className="relative size-[62px] flex items-center justify-center group/image">
-              <Hint label="remove image">
+              <Hint label="Remove image">
                 <button
                   onClick={() => {
                     setImage(null);
