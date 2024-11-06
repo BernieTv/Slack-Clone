@@ -187,7 +187,7 @@ export const remove = mutation({
     }
 
     if (currentMember._id === args.id && currentMember.role === 'admin') {
-      throw new Error('Cannot remove self if an admin');
+      throw new Error('Cannot remove self if self is an admin');
     }
 
     const [messages, reactions, conversations] = await Promise.all([
