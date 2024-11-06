@@ -1,4 +1,4 @@
-# Build a Real-Time Slack Clone With Nextjs, React, Tailwind, Auth.js
+# Build a Real-Time Slack Clone With Nextjs, React, Tailwind and Convex
 
 ## Getting Started
 
