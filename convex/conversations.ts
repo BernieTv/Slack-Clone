@@ -1,7 +1,7 @@
-import { v } from "convex/values";
+import { v } from 'convex/values';
 
-import { mutation } from "./_generated/server";
-import { getAuthUserId } from "@convex-dev/auth/server";
+import { mutation } from './_generated/server';
+import { getAuthUserId } from '@convex-dev/auth/server';
 
 export const createOrGet = mutation({
   args: {
@@ -9,7 +9,7 @@ export const createOrGet = mutation({
     workspaceId: v.id('workspaces'),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx)
+    const userId = await getAuthUserId(ctx);
 
     if (!userId) {
       throw new Error('Unauthorized');
@@ -18,8 +18,7 @@ export const createOrGet = mutation({
     const currentMember = await ctx.db
       .query('members')
       .withIndex('by_workspace_id_user_id', (q) =>
-        q.eq('workspaceId', args.workspaceId)
-          .eq('userId', userId)
+        q.eq('workspaceId', args.workspaceId).eq('userId', userId),
       )
       .unique();
 
@@ -36,13 +35,13 @@ export const createOrGet = mutation({
         q.or(
           q.and(
             q.eq(q.field('memberOneId'), currentMember._id),
-            q.eq(q.field('memberTwoId'), otherMember._id)
+            q.eq(q.field('memberTwoId'), otherMember._id),
           ),
           q.and(
             q.eq(q.field('memberOneId'), otherMember._id),
-            q.eq(q.field('memberTwoId'), currentMember._id)
-          )
-        )
+            q.eq(q.field('memberTwoId'), currentMember._id),
+          ),
+        ),
       )
       .unique();
 
@@ -57,5 +56,5 @@ export const createOrGet = mutation({
     });
 
     return conversationId;
-  }
-})
+  },
+});
