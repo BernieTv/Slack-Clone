@@ -52,7 +52,7 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
 
   const [UpdateDialog, confirmUpdate] = useConfirm(
     'Change role',
-    'Are you sure you want to change this members role?',
+    "Are you sure you want to change this member's role?",
   );
 
   const { data: currentMember, isLoading: isLoadingCurrentMember } =
